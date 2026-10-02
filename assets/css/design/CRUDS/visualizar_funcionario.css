@@ -1,0 +1,844 @@
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: transparent;
+    color: #e8e8e8;
+}
+
+
+/* =========================================================
+   VISUALIZADOR
+========================================================= */
+
+.visualizador-funcionario {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 24px;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.025),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(139, 92, 246, 0.035),
+            transparent 32%
+        ),
+        #151717;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FUNDO DECORATIVO
+========================================================= */
+
+.visualizador-funcionario::before {
+    content: "";
+
+    position: fixed;
+    inset: -120px;
+
+    background:
+        radial-gradient(
+            circle at 18% 25%,
+            rgba(255, 255, 255, 0.025),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 82% 75%,
+            rgba(139, 92, 246, 0.045),
+            transparent 30%
+        );
+
+    filter: blur(75px);
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* =========================================================
+   BOTÃO FECHAR
+========================================================= */
+
+.btn-fechar {
+    position: absolute;
+
+    top: 18px;
+    right: 22px;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    background: #1a1e1f;
+    border: 1px solid #303333;
+    border-radius: 9px;
+
+    color: #777979;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+
+    z-index: 10;
+}
+
+.btn-fechar:hover {
+    background: #242626;
+    border-color: #444747;
+    color: #ffffff;
+    transform: rotate(3deg);
+}
+
+.btn-fechar svg {
+    width: 17px;
+    height: 17px;
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.visualizador-titulo {
+    position: relative;
+
+    width: 100%;
+    max-width: 1080px;
+
+    text-align: center;
+
+    margin-bottom: 9px;
+
+    z-index: 1;
+}
+
+.visualizador-legenda {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 4px 9px;
+    margin-bottom: 5px;
+
+    border-radius: 20px;
+
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.15);
+
+    color: #a989ed;
+
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.visualizador-titulo h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 21px;
+    font-weight: 600;
+
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+}
+
+.visualizador-titulo p {
+    margin: 4px 0 0;
+
+    color: #666b6d;
+
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   CARD PRINCIPAL
+========================================================= */
+
+.funcionario-card {
+    position: relative;
+
+    width: 100%;
+    max-width: 1080px;
+
+    background: #1f2020;
+
+    border: 1px solid #303131;
+    border-radius: 15px;
+
+    box-shadow:
+        0 25px 65px rgba(0, 0, 0, 0.40);
+
+    overflow: hidden;
+
+    z-index: 1;
+
+    animation:
+        funcionarioEntrada 0.28s ease both;
+}
+
+
+/* brilho superior discreto */
+
+.funcionario-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 10%;
+    right: 10%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.13),
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TOPO DO CARD
+========================================================= */
+
+.funcionario-card-topo {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 13px 22px;
+
+    background: #1a1c1c;
+
+    border-bottom: 1px solid #303131;
+}
+
+
+/* =========================================================
+   FOTO
+========================================================= */
+
+.funcionario-foto {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background: #151717;
+
+    border: 1px solid #303333;
+    border-radius: 50%;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.30);
+}
+
+.funcionario-foto img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   IDENTIFICAÇÃO
+========================================================= */
+
+.funcionario-identificacao {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.funcionario-identificacao h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.funcionario-meta {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    flex-wrap: wrap;
+}
+
+.tipo-funcionario,
+.id-funcionario {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 500;
+}
+
+.tipo-funcionario {
+    background: rgba(139, 92, 246, 0.10);
+
+    border: 1px solid rgba(139, 92, 246, 0.17);
+
+    color: #b78aff;
+}
+
+.id-funcionario {
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.065);
+
+    color: #666b6d;
+}
+
+
+/* =========================================================
+   ÁREA DE INFORMAÇÕES
+========================================================= */
+
+.funcionario-informacoes {
+    padding: 14px 22px 15px;
+}
+
+
+/* =========================================================
+   TÍTULO DAS SEÇÕES
+========================================================= */
+
+.secao-titulo {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 8px;
+}
+
+.secao-funcional {
+    margin-top: 13px;
+}
+
+.secao-icone {
+    width: 26px;
+    height: 26px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: rgba(139, 92, 246, 0.08);
+
+    border: 1px solid rgba(139, 92, 246, 0.13);
+
+    color: #9b78d8;
+}
+
+.secao-icone svg {
+    width: 13px;
+    height: 13px;
+}
+
+.secao-titulo > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+.secao-titulo strong {
+    color: #e8e8e8;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.secao-titulo span {
+    color: #606566;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   GRID DOS CAMPOS
+========================================================= */
+
+.campos-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 7px 13px;
+}
+
+
+/* =========================================================
+   CAMPO
+========================================================= */
+
+.campo {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.campo-largo {
+    grid-column: 1 / -1;
+}
+
+.campo label {
+    color: #656a6c;
+
+    font-size: 8px;
+    font-weight: 500;
+
+    letter-spacing: 0.35px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   VALOR
+========================================================= */
+
+.valor {
+    min-height: 30px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 5px 10px;
+
+    background: #1a1e1f;
+
+    border: 1px solid #303333;
+    border-radius: 7px;
+
+    color: #c9cbcc;
+
+    font-size: 10px;
+    line-height: 1.3;
+
+    word-break: break-word;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.valor:hover {
+    background: #1d2122;
+    border-color: #3c3f40;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    width: fit-content;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 500;
+}
+
+.status::before {
+    content: "";
+
+    width: 5px;
+    height: 5px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: currentColor;
+}
+
+.status-ativo {
+    background: rgba(40, 167, 69, 0.10);
+
+    color: #65d68a;
+
+    border: 1px solid rgba(40, 167, 69, 0.17);
+}
+
+.status-arquivado {
+    background: rgba(220, 53, 69, 0.10);
+
+    color: #d66b6b;
+
+    border: 1px solid rgba(220, 53, 69, 0.17);
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.funcionario-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 9px 22px;
+
+    background: #1a1c1c;
+
+    border-top: 1px solid #303131;
+}
+
+.footer-info {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: #555b5d;
+
+    font-size: 9px;
+}
+
+.footer-ponto {
+    width: 5px;
+    height: 5px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #686d6f;
+}
+
+.btn-footer-fechar {
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 12px;
+
+    background: #242626;
+
+    border: 1px solid #303333;
+    border-radius: 7px;
+
+    color: #a8aaaa;
+
+    font-family: inherit;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.btn-footer-fechar:hover {
+    background: #2b2e2e;
+
+    border-color: #454848;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   ANIMAÇÃO
+========================================================= */
+
+@keyframes funcionarioEntrada {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(0.99);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   TELAS MENORES
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .visualizador-funcionario {
+        padding: 14px 20px;
+    }
+
+    .visualizador-titulo {
+        max-width: 100%;
+    }
+
+    .funcionario-card {
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================================
+   TABLET / CELULAR
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .visualizador-funcionario {
+        justify-content: flex-start;
+
+        padding:
+            62px 14px 14px;
+
+        overflow: hidden;
+    }
+
+    .btn-fechar {
+        top: 15px;
+        right: 15px;
+    }
+
+    .visualizador-titulo {
+        margin-bottom: 12px;
+    }
+
+    .visualizador-titulo h1 {
+        font-size: 19px;
+    }
+
+    .visualizador-titulo p {
+        font-size: 10px;
+    }
+
+    .funcionario-card {
+        border-radius: 13px;
+    }
+
+    .funcionario-card-topo {
+        padding: 15px 17px;
+    }
+
+    .funcionario-foto {
+        width: 55px;
+        height: 55px;
+    }
+
+    .funcionario-identificacao h2 {
+        font-size: 16px;
+    }
+
+    .funcionario-informacoes {
+        padding:
+            15px 17px 16px;
+    }
+
+    .campos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-largo {
+        grid-column: auto;
+    }
+
+    .funcionario-card-footer {
+        padding:
+            10px 17px;
+    }
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .visualizador-funcionario {
+        padding:
+            58px 10px 10px;
+    }
+
+    .visualizador-titulo h1 {
+        font-size: 17px;
+    }
+
+    .visualizador-titulo p {
+        font-size: 9px;
+    }
+
+    .funcionario-card-topo {
+        align-items: flex-start;
+
+        padding: 13px 14px;
+
+        gap: 11px;
+    }
+
+    .funcionario-foto {
+        width: 48px;
+        height: 48px;
+    }
+
+    .funcionario-identificacao h2 {
+        font-size: 14px;
+
+        white-space: normal;
+    }
+
+    .funcionario-meta {
+        gap: 4px;
+    }
+
+    .tipo-funcionario,
+    .id-funcionario {
+        font-size: 8px;
+        padding: 3px 7px;
+    }
+
+    .funcionario-informacoes {
+        padding:
+            13px 14px 14px;
+    }
+
+    .secao-funcional {
+        margin-top: 14px;
+    }
+
+    .secao-icone {
+        width: 26px;
+        height: 26px;
+    }
+
+    .valor {
+        font-size: 9px;
+        min-height: 30px;
+    }
+
+    .funcionario-card-footer {
+        padding:
+            9px 14px;
+    }
+
+    .footer-info {
+        display: none;
+    }
+
+    .funcionario-card-footer {
+        justify-content: flex-end;
+    }
+}

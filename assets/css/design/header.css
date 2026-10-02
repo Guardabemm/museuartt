@@ -1,0 +1,539 @@
+.topo {
+    grid-area: header;
+    width: 100%;
+    height: 80px;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    position: relative;
+    z-index: 1;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.barra-pesquisa {
+    width: 600px;
+    max-width: 50%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    background: #1a1e1f;
+    border: 1px solid #292d2e;
+    border-radius: 24px;
+    padding: 0 18px;
+    position: relative;
+    z-index: 1000;
+    margin-left: 150px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+.barra-pesquisa:focus-within {
+    border-color: #444444;
+    background: #0d0f10;
+}
+.barra-pesquisa input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: transparent;
+    height: 100%;
+    color: #e8e8e8;
+    min-width: 0;
+}
+.barra-pesquisa input::placeholder {
+    color: #555;
+}
+.icone-pesquisa {
+    color: #555;
+    font-size: 18px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.btn-limpar {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    padding: 0 5px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+    flex-shrink: 0;
+}
+.btn-limpar:hover {
+    color: #e8e8e8;
+}
+.sugestoes {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    min-width: 300px;
+    max-height: 400px;
+    background: #1a1e1f;
+    border: 1px solid #292d2e;
+    border-radius: 16px;
+    overflow-y: auto;
+    display: none;
+    z-index: 99999;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.6);
+    padding: 8px 0;
+}
+.sugestoes.ativo {
+    display: block;
+    animation:
+        slideDown
+        0.2s
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform:
+            translateY(-8px)
+            scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+.sugestao {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 18px;
+    color: #e8e8e8;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        border-left-color 0.15s ease;
+    border-left: 3px solid transparent;
+}
+.sugestao:hover,
+.sugestao.selecionado {
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: #b70606;
+}
+.sugestao i {
+    font-size: 18px;
+    color: #555;
+    flex-shrink: 0;
+    width: 24px;
+ text-align: center;
+}
+.sugestao-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+.sugestao-nome {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sugestao-nome mark {
+    background: rgba(183, 6, 6, 0.3);
+    color: #ffffff;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+.sugestao-autor {
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sugestao-autor mark {
+    background: rgba(183, 6, 6, 0.15);
+    color: #888;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+.sugestao-categoria {
+    font-size: 10px;
+    color: #555;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2px 10px;
+    border-radius: 12px;
+    flex-shrink: 0;
+ text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.sugestao-vazia {
+    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    color: #555;
+    font-size: 14px;
+}
+.sugestao-vazia i {
+    color: #333;
+    display: block;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+.sugestao-vazia strong {
+    color: #777;
+}
+.sugestoes::-webkit-scrollbar {
+    width: 5px;
+}
+.sugestoes::-webkit-scrollbar-track {
+    background: transparent;
+}
+.sugestoes::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+    border-radius: 10px;
+}
+.sugestoes::-webkit-scrollbar-thumb:hover {
+    background: #3a3a3a;
+}
+.nenhuma-obra-pesquisa {
+    width: 100%;
+    min-height: 250px;
+    grid-column: 1 / -1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+ flex-direction: column;
+    text-align: center;
+    color: #666;
+}
+.nenhuma-obra-pesquisa i {
+    font-size: 42px;
+    margin-bottom: 15px;
+    color: #444;
+}
+.nenhuma-obra-pesquisa h3 {
+    margin: 0 0 6px;
+    color: #aaa;
+    font-size: 18px;
+}
+.nenhuma-obra-pesquisa p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+.nenhuma-obra-pesquisa strong {
+    color: #aaa;
+}
+.perfil {
+    margin-left: auto;
+    margin-right: 0;
+
+
+    position: relative;
+
+
+    flex-shrink: 0;
+
+
+    z-index: 10001;
+}
+.perfil-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 14px 6px 6px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 30px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+/* Adicione isto para garantir que os elementos filhos não interfiram no evento de clique */
+.perfil-btn * {
+    pointer-events: none;
+}
+.perfil-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color:
+        rgba(255, 255, 255, 0.12);
+}
+.perfil-btn img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #2a2a2a;
+}
+.perfil-btn .perfil-nome {
+    font-size: 13px;
+    font-weight: 500;
+    color: #e8e8e8;
+    white-space: nowrap;
+}
+.perfil-btn .bi-caret-down-fill,
+.perfil-btn .bi-caret-up-fill {
+    font-size: 12px;
+    color: #666;
+    transition:
+        transform 0.2s ease;
+}
+.perfil-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 320px;
+    background: #1a1e1f;
+    border: 1px solid #292d2e;
+    border-radius: 12px;
+    display: none;
+    overflow: hidden;
+ z-index: 100000; /* Aumentado para garantir prioridade sobre a pesquisa */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+
+.perfil-menu.ativo {
+    display: block !important;
+    animation: slideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.perfil-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.06);
+}
+.perfil-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+.perfil-user img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #2a2a2a;
+    flex-shrink: 0;
+}
+.perfil-user span {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.perfil-menu a {
+    display: flex;
+    align-items: center;
+ gap: 15px;
+    padding: 14px 20px;
+    color: #c0c0c0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.02);
+}
+.perfil-menu a:last-child {
+    border-bottom: none;
+}
+.perfil-menu a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+.perfil-menu a i {
+    width: 20px;
+    font-size: 18px;
+    color: #888;
+    text-align: center;
+    flex-shrink: 0;
+}
+.perfil-menu a:hover i {
+    color: #ffffff;
+}
+.perfil-menu a:last-child {
+    color: #dc3545;
+}
+.perfil-menu a:last-child i {
+    color: #dc3545;
+}
+.perfil-menu a:last-child:hover {
+    background:
+        rgba(220, 53, 69, 0.08);
+}
+@media (max-width: 1024px) {
+    .barra-pesquisa {
+        width: 400px;
+        max-width: 60%;
+        margin-left: 80px;
+    }
+    .perfil-btn .perfil-nome {
+  display: none;
+    }
+    .perfil-btn {
+        padding:
+            6px 10px 6px 6px;
+    }
+    .perfil-menu {
+        width: 280px;
+        right: -10px;
+    }
+}
+@media (max-width: 768px) {
+    .topo {
+        padding: 0 15px;
+        gap: 10px;
+        height: 65px;
+    }
+    .barra-pesquisa {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        height: 38px;
+    }
+    .barra-pesquisa input {
+        font-size: 13px;
+    }
+    .perfil-btn {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        justify-content: center;
+        border: none;
+    }
+    .perfil-btn img {
+        width: 34px;
+        height: 34px;
+    }
+    .perfil-btn .perfil-nome,
+    .perfil-btn .bi-caret-down-fill,
+    .perfil-btn .bi-caret-up-fill {
+        display: none;
+    }
+    .perfil-menu {
+     width: 280px;
+        right: -10px;
+    }
+    .sugestoes {
+        min-width: 0;
+        width: 100%;
+        max-height: 350px;
+    }
+    .sugestao {
+        padding: 10px 14px;
+    }
+    .sugestao-nome {
+        font-size: 13px;
+    }
+    .perfil-topo {
+        padding: 14px 16px;
+    }
+    .perfil-user span {
+        font-size: 13px;
+    }
+    .perfil-menu a {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+}
+@media (max-width: 480px) {
+    .topo {
+        padding: 0 10px;
+        height: 60px;
+    }
+    .barra-pesquisa {
+        height: 34px;
+        padding: 0 12px;
+        border-radius: 18px;
+    }
+    .barra-pesquisa input {
+        font-size: 12px;
+    }
+    .icone-pesquisa {
+        font-size: 15px;
+        margin-right: 8px;
+    }
+    .btn-limpar {
+    font-size: 16px;
+    }
+    .perfil-btn {
+        width: 34px;
+        height: 34px;
+    }
+    .perfil-btn img {
+        width: 30px;
+        height: 30px;
+    }
+    .perfil-menu {
+        width: 260px;
+        right: -5px;
+    }
+    .sugestao {
+        padding: 8px 12px;
+        gap: 10px;
+    }
+    .sugestao i {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+    .sugestao-nome {
+        font-size: 12px;
+    }
+    .sugestao-autor {
+        font-size: 11px;
+    }
+    .sugestao-categoria {
+        font-size: 9px;
+        padding: 1px 8px;
+    }
+    .sugestoes {
+        max-height: 300px;
+    }
+    .perfil-user img {
+        width: 40px;
+        height: 40px;
+    }
+    .perfil-user span {
+        font-size: 12px;
+    }
+ .perfil-menu a {
+        padding: 10px 14px;
+        font-size: 12px;
+        gap: 12px;
+    }
+    .perfil-menu a i {
+        font-size: 16px;
+        width: 18px;
+    }
+}
+@media (min-width: 1440px) {
+    .barra-pesquisa {
+        width: 700px;
+        max-width: 45%;
+        margin-left: 200px;
+    }
+    .barra-pesquisa input {
+        font-size: 15px;
+    }
+}
+

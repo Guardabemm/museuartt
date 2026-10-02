@@ -1,0 +1,527 @@
+/* =========================================================
+   ESTRUTURA BASE E GRID PRINCIPAL
+========================================================= */
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER DA PÁGINA
+========================================================= */
+
+
+.dashboard-header {
+    grid-column: 1 / 13;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 0 10px;
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+}
+
+
+.dashboard-boas-vindas {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+.dashboard-boas-vindas span {
+    color: #8e96a5;
+    font-size: 13px;
+}
+
+
+.dashboard-boas-vindas h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+.dashboard-info {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+
+.dashboard-data,
+.dashboard-hora {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.dashboard-data > i,
+.dashboard-hora > i {
+    color: #ffffff;
+    font-size: 18px;
+}
+
+
+.dashboard-data div,
+.dashboard-hora div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dashboard-data span,
+.dashboard-hora span {
+    color: #737b8c;
+    font-size: 10px;
+}
+
+
+.dashboard-data strong,
+.dashboard-hora strong {
+    color: #e5e7eb;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   CARDS SUPERIORES
+========================================================= */
+
+
+.cards {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+
+.card-item {
+    background: #1d1d1d;
+    border: 1px solid #293142;
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: row;      /* Ícone ao lado do texto */
+    align-items: center;       /* Centraliza ícone e textos na vertical */
+    justify-content: flex-start;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+
+.card-icon-box {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   /* Alinha o número e texto à esquerda */
+    justify-content: center;
+    gap: 2px;
+    min-width: 0;
+}
+
+
+.card-info strong {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+
+.card-info small {
+    color: #6b7280;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   COLUNAS INDEPENDENTES (RESOLVE O ESPAÇAMENTO VAZIO)
+========================================================= */
+
+
+.coluna-esquerda {
+    grid-column: 1 / 8;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.coluna-direita {
+    grid-column: 8 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.lista-area,
+.grafico-area,
+.status-area,
+.nova-aba-area,
+.agenda-area {
+    background: #1d1d1d;
+    border: 1px solid #293142;
+    border-radius: 14px;
+    font-family: 'Inter', sans-serif;
+    padding: 20px;
+    color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+
+.section-header > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.section-header i { color: #ffffff; font-size: 18px; }
+.section-header h2 { margin: 0; font-size: 16px; font-weight: 600; }
+.section-header a { color: #8e96a5; text-decoration: none; font-size: 12px; }
+.section-header a:hover { color: #ffffff; }
+
+
+/* =========================================================
+   LISTAS DE ITENS E ATIVIDADES
+========================================================= */
+
+
+.itens-lista { display: flex; flex-direction: column; }
+
+
+.item {
+    display: grid;
+    grid-template-columns: 52px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #252c39;
+}
+
+
+.item:last-child { border-bottom: none; }
+
+
+.item-imagem {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+.item-imagem img { width: 100%; height: 100%; object-fit: cover; }
+
+
+.item-info h3 { margin: 0 0 3px; font-size: 13px; font-weight: 500; }
+.item-info span { color: #8b93a3; font-size: 11px; }
+
+
+.categoria,
+.status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+
+.categoria { background: rgba(139, 92, 246, 0.15); color: #b78aff; }
+
+
+.item .status.status-exposicao { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+.item .status.status-restauracao { background: rgba(197, 126, 34, 0.15); color: #cc8432; }
+.item .status.status-reserva { background: rgba(34, 45, 197, 0.15); color: #4b7bec; }
+.item .status.status-indisponivel { background: rgba(196, 54, 29, 0.15); color: #e23333; }
+.item .status.status-sem-cor { background: rgba(150, 150, 150, 0.15); color: #aaa; }
+
+
+/* =========================================================
+   GRÁFICO (SEM ALTURA EXTRA)
+========================================================= */
+
+
+.grafico-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0;
+}
+
+
+.grafico-container canvas {
+    width: 140px !important;
+    height: 140px !important;
+    flex-shrink: 0;
+}
+
+
+.legenda-grafico {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+.legenda-grafico div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #b7bdc9;
+    font-size: 11px;
+    padding: 2px 4px;
+}
+
+
+.legenda-grafico strong { margin-left: auto; color: #8e96a5; font-weight: 400; }
+
+
+.bolinha { width: 7px; height: 7px; border-radius: 50%; }
+.roxa { background: #7e56da; }
+.azul { background: #54b4da; }
+.rosa { background: #da5497; }
+.verde { background: #1cc96a; }
+.laranja { background: #f59e0b; }
+.marrom { background: #833d0e; }
+.vermelho { background: #d12e2e; }
+
+
+/* =========================================================
+   STATUS DOS ITENS (2X2)
+========================================================= */
+
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+
+.status-card {
+    min-width: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #293142;
+    box-sizing: border-box;
+}
+
+
+.status-card .status-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+
+.status-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+
+.status-card strong {
+    font-size: 16px;
+    line-height: 1;
+    color: #f5f5f5;
+}
+
+
+.status-card span {
+    font-size: 10px;
+    color: #9ca3af;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.status-card.em-exposicao .status-icon { background: #22c55e; color: white; }
+.status-card.restauracao .status-icon { background: #f59e0b; color: white; }
+.status-card.reservado .status-icon { background: #dc2626; color: white; }
+.status-card.indisponivel .status-icon { background: #57534e; color: white; }
+
+
+/* =========================================================
+   ITENS POR ALA
+========================================================= */
+
+
+.agenda-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+
+.exposicao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #252525;
+    border: 1px solid #293142;
+    border-radius: 10px;
+}
+
+
+.data {
+    width: 42px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+}
+
+
+.data strong { font-size: 16px; line-height: 1; }
+.data span { font-size: 8px; margin-top: 2px; }
+
+
+.data.vermelho   { background: #dc2626 !important; }
+.data.laranja    { background: #f59e0b !important; }
+.data.amarelo    { background: #eab308 !important; }
+.data.verde      { background: #16a34a !important; }
+.data.azulclaro  { background: #06b6d4 !important; }
+.data.azulescuro { background: #2563eb !important; }
+.data.roxo       { background: #9333ea !important; }
+
+
+.exposicao-info { display: flex; flex-direction: column; gap: 2px; }
+.exposicao-info h3 { margin: 0; font-size: 13px; color: #ffffff; }
+.exposicao-info span { color: #8e96a5; font-size: 10px; }
+.exposicao-info small { color: #f7f7f8; font-size: 10px; }
+
+
+.nova-exposicao {
+    border: 1px dashed #3b4353;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #8e96a5;
+    text-decoration: none;
+    padding: 12px;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+
+@media (max-width: 1100px) {
+    .dashboard-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .coluna-esquerda,
+    .coluna-direita {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 650px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

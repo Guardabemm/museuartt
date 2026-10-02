@@ -1,0 +1,348 @@
+/* =========================================================
+   RESET E BASE (Harmonizado com o Dashboard)
+   ========================================================= */
+   html,
+   body {
+       margin: 0;
+       padding: 0;
+       width: 100%;
+       height: 100%;
+       overflow: hidden;
+       font-family: 'Inter', system-ui, -apple-system, sans-serif;
+       background: #0d0e11;
+       color: #ffffff;
+   }
+   
+   /* =========================================================
+      ESTRUTURA DA PÁGINA
+      ========================================================= */
+   .perfil-pagina {
+       position: relative;
+       width: 100%;
+       height: 100vh;
+       box-sizing: border-box;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       padding: 30px 20px;
+       background: radial-gradient(
+           circle at 50% 20%,
+           rgba(41, 49, 66, 0.25),
+           #0d0e11 70%
+       );
+   }
+   
+   /* =========================================================
+      BOTÃO VOLTAR
+      ========================================================= */
+   .btn-voltar {
+       position: absolute;
+       top: 25px;
+       left: 28px;
+       width: 38px;
+       height: 38px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       background: #1d1d1d;
+       border: 1px solid #293142;
+       border-radius: 10px;
+       color: #8e96a5;
+       cursor: pointer;
+       transition: all 0.2s ease;
+       z-index: 5;
+   }
+   
+   .btn-voltar:hover {
+       background: #252c39;
+       color: #ffffff;
+       border-color: #3b4353;
+       transform: translateX(-3px);
+   }
+   
+   .btn-voltar svg {
+       width: 18px;
+       height: 18px;
+   }
+   
+   /* =========================================================
+      CABEÇALHO DA PÁGINA
+      ========================================================= */
+   .perfil-titulo {
+       text-align: center;
+       margin-bottom: 18px;
+       z-index: 1;
+   }
+   
+   .perfil-titulo h1 {
+       margin: 0;
+       font-size: 24px;
+       font-weight: 600;
+       color: #ffffff;
+       line-height: 1.2;
+   }
+   
+   .perfil-titulo p {
+       margin: 4px 0 0;
+       font-size: 13px;
+       color: #8e96a5;
+   }
+   
+   /* =========================================================
+      CARD PRINCIPAL (Identico às áreas do Dashboard)
+      ========================================================= */
+   .perfil-card {
+       position: relative;
+       width: 100%;
+       max-width: 780px;
+       max-height: 80vh;
+       background: #1d1d1d;
+       border: 1px solid #293142;
+       border-radius: 14px;
+       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+       display: flex;
+       flex-direction: column;
+       overflow: hidden;
+       z-index: 1;
+   }
+   
+   /* =========================================================
+      CABEÇALHO DO CARD (Perfil do Usuário)
+      ========================================================= */
+   .perfil-card-topo {
+       display: flex;
+       align-items: center;
+       gap: 16px;
+       padding: 18px 24px;
+       border-bottom: 1px solid #252c39;
+       background: rgba(255, 255, 255, 0.01);
+   }
+   
+   .perfil-foto {
+       width: 52px;
+       height: 52px;
+       border-radius: 50%;
+       overflow: hidden;
+       border: 2px solid #293142;
+       flex-shrink: 0;
+   }
+   
+   .perfil-foto img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+   }
+   
+   .perfil-identificacao {
+       display: flex;
+       flex-direction: column;
+       gap: 4px;
+   }
+   
+   .perfil-identificacao h2 {
+       margin: 0;
+       font-size: 17px;
+       font-weight: 600;
+       color: #ffffff;
+   }
+   
+   .perfil-identificacao span {
+       width: fit-content;
+       padding: 3px 10px;
+       border-radius: 20px;
+       background: rgba(139, 92, 246, 0.15);
+       color: #b78aff;
+       font-size: 11px;
+       font-weight: 500;
+   }
+   
+   /* =========================================================
+      ÁREA DAS NOTIFICAÇÕES / ATIVIDADES
+      ========================================================= */
+   .nova-aba-area {
+       padding: 20px 24px;
+       display: flex;
+       flex-direction: column;
+       flex: 1;
+       overflow: hidden;
+   }
+   
+   .section-header {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       margin-bottom: 16px;
+   }
+   
+   .section-header > div {
+       display: flex;
+       align-items: center;
+       gap: 10px;
+   }
+   
+   .section-header i {
+       color: #ffffff;
+       font-size: 18px;
+   }
+   
+   .section-header h2 {
+       margin: 0;
+       font-size: 16px;
+       font-weight: 600;
+       color: #ffffff;
+   }
+   
+   /* =========================================================
+      LISTA DE ATIVIDADES (Com Scrollbar Estilizado)
+      ========================================================= */
+   .atividades-lista {
+       display: flex;
+       flex-direction: column;
+       gap: 4px;
+       flex: 1;
+       overflow-y: auto;
+       padding-right: 6px;
+   }
+   
+   .atividades-lista::-webkit-scrollbar {
+       width: 4px;
+   }
+   
+   .atividades-lista::-webkit-scrollbar-track {
+       background: #252c39;
+       border-radius: 10px;
+   }
+   
+   .atividades-lista::-webkit-scrollbar-thumb {
+       background: #3b4353;
+       border-radius: 10px;
+   }
+   
+   /* ITEM DA ATIVIDADE */
+   .atividade-item {
+       display: grid !important;
+       grid-template-columns: 42px 1fr auto !important;
+       align-items: center !important;
+       gap: 12px !important;
+       padding: 10px 12px !important;
+       border-radius: 8px !important;
+       border-bottom: 1px solid #252c39 !important;
+       transition: background 0.2s ease, transform 0.2s ease !important;
+   }
+   
+   .atividade-item:last-child {
+       border-bottom: none !important;
+   }
+   
+   .atividade-item:hover {
+       background: rgba(255, 255, 255, 0.03) !important;
+       transform: translateX(3px);
+   }
+   
+   .atividade-icone {
+       width: 38px !important;
+       height: 38px !important;
+       min-width: 38px !important;
+       border-radius: 50% !important;
+       display: flex !important;
+       align-items: center !important;
+       justify-content: center !important;
+       overflow: hidden !important;
+   }
+   
+   .atividade-icone img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+   }
+   
+   .atividade-icone i {
+       font-size: 18px !important;
+   }
+   
+   .item-info h3 {
+       font-size: 13px !important;
+       font-weight: 500 !important;
+       color: #f3f4f6 !important;
+       margin: 0 0 2px 0 !important;
+   }
+   
+   .item-info span {
+       font-size: 12px !important;
+       color: #9ca3af !important;
+       display: flex !important;
+       flex-wrap: wrap !important;
+       gap: 4px !important;
+       align-items: center !important;
+   }
+   
+   .item-info span strong {
+       font-weight: 500 !important;
+   }
+   
+   .item-info span small {
+       font-size: 10px !important;
+       color: #6b7280 !important;
+   }
+   
+   .atividade-tempo {
+       font-size: 11px !important;
+       color: #737b8c !important;
+       padding: 3px 10px !important;
+       border-radius: 12px !important;
+       background: rgba(255, 255, 255, 0.03) !important;
+       border: none !important;
+       white-space: nowrap !important;
+       display: flex !important;
+       align-items: center !important;
+   }
+   
+   /* ESTADO VAZIO */
+   .atividade-vazia {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       padding: 40px 0;
+       color: #6b7280;
+       gap: 8px;
+   }
+   
+   .atividade-vazia i {
+       font-size: 32px;
+       opacity: 0.4;
+   }
+   
+   .atividade-vazia p {
+       font-size: 14px;
+       margin: 0;
+       color: #8e96a5;
+   }
+   
+   .atividade-vazia small {
+       font-size: 12px;
+       color: #6b7280;
+   }
+   
+   /* =========================================================
+      RESPONSIVIDADE
+      ========================================================= */
+   @media (max-width: 650px) {
+       .perfil-pagina {
+           padding: 60px 12px 12px;
+       }
+   
+       .btn-voltar {
+           top: 15px;
+           left: 15px;
+       }
+   
+       .perfil-card {
+           max-height: 85vh;
+       }
+   
+       .nova-aba-area {
+           padding: 16px;
+       }
+   }

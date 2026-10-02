@@ -1,0 +1,1286 @@
+.alocacoes-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(500px, .92fr);
+    gap: 32px;
+    width: 100%;
+
+  
+    min-height: calc(100vh - 110px);
+
+    padding: 30px 34px 80px;
+    color: #f1f1f1;
+}
+
+.alas-section {
+    min-width: 0;
+    min-height: 0;
+   
+   
+}
+
+.alas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+    margin-bottom: 32px;
+}
+
+.alas-titulo {
+    display: flex;
+    align-items: center;
+     font-family: 'Arial', Helvetica, sans-serif;
+    gap: 12px;
+}
+
+.titulo-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    color: #aaa;
+
+    font-size: 19px;
+}
+
+.alas-titulo h1 {
+    margin: 0;
+    color: #eeeeee;
+
+    font-size: 25px;
+    font-weight: 400;
+
+    letter-spacing: -.4px;
+}
+
+.alas-titulo p {
+    margin: 5px 0 0;
+
+    color: #6f7275;
+
+    font-family: 'Arial', Helvetica, sans-serif;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+
+.alas-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   CARD DA ALA
+   ========================================================= */
+
+.ala-card {
+    --ala-cor: #ffffff;
+
+    position: relative;
+
+    height: 170px;
+
+    overflow: hidden;
+
+    border: 1px solid #252729;
+    border-radius: 13px;
+
+    background: #121415;
+
+    cursor: pointer;
+
+    isolation: isolate;
+
+    transition:
+        border-color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+
+/* pequeno detalhe de cor */
+
+.ala-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background: var(--ala-cor);
+
+    opacity: .22;
+
+    transition: opacity .25s ease;
+}
+
+
+/* brilho extremamente discreto */
+
+.ala-card::after {
+    content: "";
+
+    position: absolute;
+
+    right: -70px;
+    top: -70px;
+
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
+
+    background: var(--ala-cor);
+
+    opacity: .025;
+
+    filter: blur(35px);
+
+    pointer-events: none;
+
+    transition:
+        opacity .3s ease;
+}
+
+.ala-card:hover {
+    transform: translateY(-2px);
+
+    border-color: #37393b;
+
+    background: #151718;
+}
+
+.ala-card:hover::before {
+    opacity: .55;
+}
+
+.ala-card:hover::after {
+    opacity: .06;
+}
+
+
+/* =========================================================
+   BRILHO DA ALA
+   ========================================================= */
+
+.ala-brilho {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 90px;
+
+    pointer-events: none;
+
+    opacity: .12;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            var(--ala-cor),
+            transparent 65%
+        );
+}
+
+
+/* remove o aspecto neon exagerado */
+
+.ala-brilho::before,
+.ala-brilho::after {
+    display: none;
+}
+
+
+/* =========================================================
+   CONTEÚDO DO CARD
+   ========================================================= */
+
+.ala-conteudo {
+    position: absolute;
+
+    inset: auto 17px 15px;
+
+    z-index: 2;
+}
+
+.ala-identificacao {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.ala-codigo {
+    width: max-content;
+
+    color:
+        color-mix(
+            in srgb,
+            var(--ala-cor) 72%,
+            #aaa
+        );
+
+    font-family: monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    opacity: .75;
+}
+
+.ala-conteudo h2 {
+    margin: 0;
+
+    color: #e8e8e8;
+
+    font-family: "Arial", Helvetica, sans-serif;
+
+    font-size: 19px;
+
+    font-weight: 500;
+
+    line-height: 1.2;
+}
+
+.ala-data {
+    margin: 5px 0 0;
+
+    color: #686c6f;
+
+    font-family: 'Arial', Helvetica, sans-serif;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   FOOTER DO CARD
+   ========================================================= */
+
+.ala-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 15px;
+}
+
+.ala-footer > span {
+    color: #85888b;
+
+    font-size: 10px;
+}
+
+
+/* botão circular */
+
+.btn-abrir-ala {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 29px;
+    height: 29px;
+
+    padding: 0;
+
+    border: 1px solid #303336;
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #777b7e;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s ease,
+        color .2s ease,
+        background .2s ease;
+}
+
+.btn-abrir-ala i {
+    font-size: 10px;
+}
+
+.btn-abrir-ala:hover {
+    border-color: #505357;
+
+    background: rgba(255,255,255,.04);
+
+    color: #ddd;
+}
+
+
+/* =========================================================
+   ALA SELECIONADA
+   ========================================================= */
+
+.ala-card.selecionada {
+    border-color:
+        color-mix(
+            in srgb,
+            var(--ala-cor) 48%,
+            #303235
+        );
+
+    background: #151718;
+}
+
+.ala-card.selecionada::before {
+    opacity: .8;
+}
+
+.ala-card.selecionada::after {
+    opacity: .07;
+}
+
+.ala-card.selecionada .btn-abrir-ala {
+    border-color:
+        color-mix(
+            in srgb,
+            var(--ala-cor) 45%,
+            #303235
+        );
+
+    color: #ddd;
+}
+
+.ala-preview {
+    position: sticky;
+    top: 30px;
+
+    align-self: start;
+
+    width: 100%;
+    min-width: 0;
+
+    height: fit-content;
+
+    overflow: visible;
+
+    border: 1px solid #252729;
+    border-radius: 16px;
+    background: #111314;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.18);
+}
+
+
+/* =========================================================
+   IMAGEM DO PREVIEW
+   ========================================================= */
+
+.preview-topo {
+    position: relative;
+
+    height: 250px;
+
+    overflow: hidden;
+}
+
+.preview-imagem-fundo {
+    position: absolute;
+
+    inset: 0;
+
+    background: #17191a;
+}
+
+.preview-imagem-fundo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        brightness(.65)
+        saturate(.65);
+
+    transform: scale(1.01);
+
+    transition:
+        transform .6s ease,
+        filter .4s ease;
+}
+
+.ala-preview:hover
+.preview-imagem-fundo img {
+    transform: scale(1.025);
+
+    filter:
+        brightness(.7)
+        saturate(.72);
+}
+
+
+/* máscara */
+
+.preview-imagem-fundo::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 25%,
+            rgba(17,19,20,.2) 45%,
+            #111314 100%
+        );
+}
+
+.preview-sem-imagem {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    color: #3c3f41;
+
+    font-size: 38px;
+}
+
+
+
+.btn-editar-ala {
+    position: absolute;
+
+    right: 17px;
+    bottom: 17px;
+
+    z-index: 5;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    height: 34px;
+
+    padding: 0 12px;
+
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 8px;
+
+    background: rgba(12,13,14,.65);
+
+    color: #bfc1c2;
+
+    font-size: 10px;
+
+    text-decoration: none;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease;
+}
+
+.btn-editar-ala:hover {
+    border-color: rgba(255,255,255,.25);
+
+    background: rgba(255,255,255,.06);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   CONTEÚDO DO PREVIEW
+   ========================================================= */
+
+.preview-conteudo {
+    position: relative;
+
+    z-index: 5;
+
+    padding: 0 24px 28px;
+}
+
+.preview-titulo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: -5px;
+}
+
+.preview-cor {
+    width: 13px;
+    height: 13px;
+
+    flex-shrink: 0;
+
+    border: 2px solid #111314;
+
+    border-radius: 50%;
+}
+
+.preview-titulo h2 {
+    margin: 0;
+
+    color: #ededed;
+
+    font-family: 'Arial', Helvetica, sans-serif;
+
+    font-size: 24px;
+
+    font-weight: 400;
+
+    line-height: 1.1;
+}
+
+.preview-titulo p {
+    margin: 4px 0 0;
+
+    color: #65696c;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 10px;
+
+    letter-spacing: .3px;
+}
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+.preview-tabs {
+    display: flex;
+
+    align-items: center;
+
+    gap: 24px;
+
+    margin-top: 22px;
+
+    border-bottom: 1px solid #252729;
+}
+
+.preview-tabs .tab {
+    position: relative;
+
+    height: 37px;
+
+    padding: 0 2px 10px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #62666a;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease;
+}
+
+.preview-tabs .tab:hover {
+    color: #aaa;
+}
+
+.preview-tabs .tab.ativa {
+    color: #e4e4e4;
+
+    font-weight: 500;
+}
+
+.preview-tabs .tab.ativa::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    bottom: -1px;
+    left: 0;
+
+    height: 1px;
+
+    background: #c9c9c9;
+
+    box-shadow: none;
+}
+
+.preview-tabs span {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 18px;
+    height: 17px;
+
+    margin-left: 4px;
+    padding: 0 5px;
+
+    border: 1px solid #2c2f31;
+    border-radius: 7px;
+
+    background: transparent;
+
+    color: #85898c;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   ANIMAÇÃO
+   ========================================================= */
+
+.preview-painel {
+    animation:
+        aparecerPainel .2s ease;
+}
+
+@keyframes aparecerPainel {
+    from {
+        opacity: 0;
+        transform: translateY(3px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   INFORMAÇÕES
+   ========================================================= */
+
+.preview-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    margin-top: 19px;
+
+    padding: 14px 3px;
+
+    border-top: 1px solid #252729;
+    border-bottom: 1px solid #252729;
+
+    background: transparent;
+}
+
+.info-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-width: 0;
+
+    padding: 0 10px;
+
+    border-right: 1px solid #252729;
+}
+
+.info-item:last-child {
+    border-right: 0;
+}
+
+.info-icone {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    flex-shrink: 0;
+
+    color: #777b7e;
+
+    font-size: 11px;
+}
+
+.info-item small {
+    display: block;
+
+    margin-bottom: 3px;
+
+    overflow: hidden;
+
+    color: #5f6366;
+
+    font-size: 7px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .5px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.info-item strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: #c9cbcc;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   DESCRIÇÃO
+   ========================================================= */
+
+.preview-descricao {
+    margin-top: 20px;
+}
+
+.preview-descricao h3 {
+    margin: 0 0 8px;
+
+    color: #d4d5d6;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 14px;
+
+    font-weight: 400;
+}
+
+.preview-descricao p {
+    margin: 0;
+
+    padding: 13px 14px;
+
+    border-left: 1px solid #303336;
+
+    background: rgba(255,255,255,.015);
+
+    color: #7f8386;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+.preview-descricao strong {
+    color: #c7c8c9;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   OBRAS
+   ========================================================= */
+
+.painel-obras {
+    margin-top: 19px;
+}
+
+.preview-obras-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 11px;
+}
+
+.preview-obras-header h2 {
+    margin: 0;
+
+    color: #dedfe0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 17px;
+
+    font-weight: 400;
+}
+
+.preview-obras-header .btn-ver-todas {
+    height: 27px;
+
+    padding: 6px 10px;
+
+    border: 1px solid #303336;
+    border-radius: 7px;
+    text-decoration: none;
+    background: transparent;
+
+    color: #888c8f;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s ease,
+        color .2s ease,
+        background .2s ease;
+}
+
+.preview-obras-header .btn-ver-todas:hover {
+    border-color: #484b4e;
+
+    background: rgba(255,255,255,.025);
+
+    color: #ddd;
+}
+
+.preview-obras {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 8px;
+}
+
+
+/* =========================================================
+   MINIATURA DAS OBRAS
+   ========================================================= */
+
+.obra-mini {
+    min-width: 0;
+
+    overflow: hidden;
+
+    border: 1px solid #252729;
+    border-radius: 9px;
+
+    background: #131516;
+
+    transition:
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.obra-mini:hover {
+    transform: translateY(-2px);
+
+    border-color: #3a3d40;
+}
+
+.obra-mini > img {
+    display: block;
+
+    width: 100%;
+    height: 85px;
+
+    object-fit: cover;
+
+    filter:
+        brightness(.8)
+        saturate(.65);
+
+    transition:
+        filter .3s ease;
+}
+
+.obra-mini:hover > img {
+    filter:
+        brightness(.9)
+        saturate(.8);
+}
+
+.obra-sem-imagem {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 85px;
+
+    background: #181a1b;
+
+    color: #3f4346;
+
+    font-size: 21px;
+}
+
+.obra-mini-conteudo {
+    padding: 8px;
+}
+
+.obra-mini strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: #d7d8d9;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 9px;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.obra-mini span {
+    display: block;
+
+    overflow: hidden;
+
+    margin-top: 3px;
+
+    color: #696d70;
+
+    font-size: 8px;
+
+    line-height: 1.2;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.obra-mini small {
+    display: block;
+
+    width: max-content;
+
+    max-width: 100%;
+
+    margin-top: 6px;
+
+    padding: 2px 5px;
+
+    overflow: hidden;
+
+    border: 1px solid #303337;
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: #85898c;
+
+    font-size: 7px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SEM OBRAS
+   ========================================================= */
+
+.sem-obras {
+    display: flex;
+
+    grid-column: 1 / -1;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 145px;
+
+    padding: 25px;
+
+    border: 1px dashed #292c2e;
+    border-radius: 9px;
+
+    color: #55595c;
+
+    text-align: center;
+}
+
+.sem-obras i {
+    margin-bottom: 8px;
+
+    font-size: 23px;
+}
+
+.sem-obras p {
+    margin: 0;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   PREVIEW VAZIO
+   ========================================================= */
+
+.preview-vazio {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 650px;
+
+    padding: 30px;
+
+    color: #505457;
+
+    text-align: center;
+}
+
+.preview-vazio i {
+    margin-bottom: 14px;
+
+    font-size: 38px;
+
+    opacity: .6;
+}
+
+.preview-vazio h2 {
+    margin: 0 0 6px;
+
+    color: #999d9f;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 20px;
+
+    font-weight: 400;
+}
+
+.preview-vazio p {
+    margin: 0;
+
+    color: #5c6063;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 1450px) {
+
+    .alocacoes-container {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(440px, .9fr);
+
+        gap: 22px;
+
+        padding: 24px;
+    }
+
+    .alas-grid {
+        gap: 12px;
+    }
+
+    .ala-card {
+        height: 165px;
+    }
+
+    .preview-obras {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 1200px) {
+
+    .alocacoes-container {
+        grid-template-columns: 1fr;
+    }
+
+    .ala-preview {
+        min-height: auto;
+    }
+
+    .alas-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .preview-vazio {
+        min-height: 400px;
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .alocacoes-container {
+        padding: 18px;
+    }
+
+    .alas-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        margin-bottom: 25px;
+    }
+
+    .btn-cadastrar-ala {
+        align-self: flex-end;
+    }
+
+    .alas-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .preview-info {
+        grid-template-columns: 1fr;
+
+        gap: 13px;
+
+        padding: 13px 0;
+    }
+
+    .info-item {
+        padding: 0 7px;
+
+        border-right: 0;
+    }
+
+    .preview-obras {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .alocacoes-container {
+        padding: 14px;
+    }
+
+    .alas-titulo {
+        align-items: flex-start;
+    }
+
+    .titulo-icone {
+        width: 35px;
+        height: 35px;
+
+        font-size: 17px;
+    }
+
+    .alas-titulo h1 {
+        font-size: 23px;
+    }
+
+    .alas-titulo p {
+        font-size: 10px;
+    }
+
+    .alas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ala-card {
+        height: 160px;
+    }
+
+    .preview-topo {
+        height: 190px;
+    }
+
+    .preview-conteudo {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .preview-titulo h2 {
+        font-size: 22px;
+    }
+
+    .preview-tabs {
+        gap: 12px;
+    }
+
+    .preview-tabs .tab {
+        font-size: 9px;
+    }
+
+    .preview-obras {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}

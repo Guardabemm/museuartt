@@ -1,0 +1,86 @@
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 340px;
+    background: #000000;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px;
+    transform: translateX(420px);
+    opacity: 0;
+    transition: .45s;
+    z-index: 9999;
+    overflow: hidden;
+}
+.pagina-index .toast {
+    top: 30px;
+    bottom: auto;
+    right: 30px;
+}
+.toast.mostrar {
+    transform: translateX(0);
+    opacity: 1;
+}
+.toast i {
+    font-size: 30px;
+}
+.toast-texto {
+    flex: 1;
+}
+.toast-texto h4 {
+    margin: 0;
+    font-size: 17px;
+    color: rgb(244, 244, 244);
+    font-weight: 700;
+}
+.toast-texto p {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #8c8a8a;
+}
+.toast-barra {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    animation: barra 4s linear forwards;
+}
+.toast.sucesso {
+    border-left: 6px solid #22c55e;
+}
+.toast.sucesso i {
+    color: #22c55e;
+}
+.toast.sucesso .toast-barra {
+    background: #22c55e;
+}
+.toast.erro {
+    border-left: 6px solid #ef4444;
+}
+.toast.erro i {
+    color: #ef4444;
+}
+.toast.erro .toast-barra {
+    background: #ef4444;
+}
+.toast.aviso {
+    border-left: 6px solid #f59e0b;
+}
+.toast.aviso i {
+    color: #f59e0b;
+}
+.toast.aviso .toast-barra {
+    background: #f59e0b;
+}
+@keyframes barra {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}

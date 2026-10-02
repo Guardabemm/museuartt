@@ -1,0 +1,28 @@
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    background-color: #000000; 
+    z-index: 9999;           
+}
+#splash-screen.sumir{
+    animation: cortina 1.5s ease-in-out forwards;
+}
+@keyframes cortina{
+    from{
+        clip-path: inset(0 0 0 0);
+    }
+    to{
+        clip-path: inset(0 0 100% 0);
+    }
+}
+
+.splash-logo {
+    width: 200px; 
+    height: auto; 
+}
