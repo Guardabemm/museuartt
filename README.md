@@ -52,35 +52,36 @@ museuart/
     └── administrador/
         ├── dashboard/  # Vista principal do dashboard
         └── exposicao/  # Vista e processamento da gestão de exposições
-## Instalação e Configuração
+```
+### Instalação e Configuração
 
-Requisitos Previstos:
+## Requisitos Previstos:
 Servidor web local (XAMPP, WAMP, Laragon ou PHP CLI)
 PHP 8.0 ou superior
 MySQL / MariaDB
 
-Passos:
-1. Clonar o Repositório:
+## Passos:
+1. **Clonar o Repositório:**
 Bash
 git clone [https://github.com/teu-usuario/museuart.git](https://github.com/teu-usuario/museuart.git)
 
-2. Configurar a Base de Dados:
+2. **Configurar a Base de Dados:**
 Importa a estrutura de tabelas necessária (item, alocacao, registro, funcionario, exposicao).
 
-3. Configura as credenciais de acesso no ficheiro backend/Config/conexao.php:
+3. **Configura as credenciais de acesso no ficheiro backend/Config/conexao.php:**
 PHP
 $strcon = mysqli_connect('localhost', 'usuario', 'senha', 'museuart');
 
-4. Executar a Aplicação:
+4. **Executar a Aplicação:**
 Copia a pasta do projeto para a diretoria do teu servidor local (ex: htdocs no XAMPP).
 
-5. Acede no navegador através de: http://localhost/SistemaMuseuArt.GuardaBem/public
+5. **Acede no navegador através de:** http://localhost/SistemaMuseuArt.GuardaBem/public
 
 ## Regras de Negócio Importantes
 
-Início de Exposições: Por regra de negócio, uma exposição não pode ser cadastrada para iniciar no próprio dia nem em datas passadas.
+**Início de Exposições:** Por regra de negócio, uma exposição não pode ser cadastrada para iniciar no próprio dia nem em datas passadas.
 
-Cálculo Automático de Status: O status de uma exposição (Programada, Em andamento, Encerrada) é recalculado e atualizado dinamicamente com base no fuso horário local (America/Sao_Paulo).
+**Cálculo Automático de Status:** O status de uma exposição (Programada, Em andamento, Encerrada) é recalculado e atualizado dinamicamente com base no fuso horário local (America/Sao_Paulo).
 
 ## Licença
 Este projeto foi desenvolvido para fins acadêmicos e de pesquisa.
