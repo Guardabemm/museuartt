@@ -63,7 +63,7 @@ MySQL / MariaDB
 ### Passos:
 1. **Clonar o Repositório:**
 Bash
-git clone [https://github.com/teu-usuario/museuart.git](https://github.com/GuardaBemm/museuartt.git)
+git clone [https://github.com/teu-usuario/museuart.git](https://github.com/GuardaBem/museuartt.git)
 
 2. **Configurar a Base de Dados:**
 Importa a estrutura de tabelas necessária (item, alocacao, registro, funcionario, exposicao).
